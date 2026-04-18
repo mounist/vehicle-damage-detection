@@ -1,0 +1,48 @@
+# Data & model weights
+data/
+*.pt
+*.pth
+*.cache
+*.onnx
+
+# Raw dataset archives (too large for git; keep them out of the working tree or ignored)
+*.zip
+
+# Model weights — too large for git, users retrain via scripts/
+outputs/models/
+
+# PDF reports are built artifacts, don't commit
+outputs/reports/*.pdf
+
+# Figures (eda/training/grad_cam/error_analysis/pipeline) and CSV/JSON reports
+# ARE tracked — README references them and they're the portfolio output.
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Envs
+.venv/
+venv/
+env/
+.env
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# YOLO runtime
+runs/
+yolov8*.pt
+
+# Colab / Kaggle leftovers
+/content/
+*.kaggle
+kaggle.json

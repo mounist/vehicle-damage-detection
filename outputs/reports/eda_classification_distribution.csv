@@ -1,0 +1,5 @@
+split,class,count
+training,00-damage,920
+training,01-whole,920
+validation,00-damage,230
+validation,01-whole,230

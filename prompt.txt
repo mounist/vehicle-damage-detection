@@ -1,0 +1,18 @@
+src/data/ 目录当前完全不存在。这是项目的致命问题——7个脚本依赖它，项目无法运行。请立即创建以下 5 个文件：
+
+1. src/data/__init__.py
+2. src/data/dataset.py — 包含 build_splits 和 build_loaders：
+   - build_splits 用 ImageFolder 加载 data1a/training 和 data1a/validation，然后从 validation 按 test_split_frac=0.20, seed=42 做 stratified split 划出 held-out test set
+   - build_loaders 返回 train/val/test 三个 DataLoader
+3. src/data/transforms.py — 包含 build_transforms 和 denormalize：
+   - build_transforms 返回 train 和 eval 两套 transforms，train 包含 RandomResizedCrop(224, scale=(0.6,1.0)), RandomRotation(20), ColorJitter(brightness=0.2, contrast=0.2), RandomHorizontalFlip, ToTensor, Normalize
+   - eval 包含 Resize(224,224), ToTensor, Normalize
+   - 都用 ImageNet mean=[0.485,0.456,0.406] / std=[0.229,0.224,0.225]
+   - denormalize 函数把 normalized tensor 转回 0-1 range 的 numpy array（Grad-CAM 需要用）
+4. src/data/coco_to_yolo.py — 把 COCO polygon annotations 转成 YOLO seg 格式的 txt 标签文件，包含 coco_to_yolo_labels, copy_images, build_yolo_yaml
+5. src/data/eda.py — 生成 class distribution、样例图片网格、图片尺寸分布、augmentation 预览、YOLO 类分布等可视化，保存到 outputs/figures/eda/
+
+创建完成后，运行以下命令验证：
+python -c "from src.data.dataset import build_splits, build_loaders; from src.data.transforms import build_transforms, denormalize; from src.data.coco_to_yolo import build_yolo_yaml, coco_to_yolo_labels, copy_images; from src.data import eda; print('all imports OK')"
+
+如果验证不通过，修到通过为止。

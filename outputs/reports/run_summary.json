@@ -1,0 +1,133 @@
+{
+  "datasets": {
+    "data1a_source": "Kaggle anujms/car-damage-detection (original course dataset)",
+    "data1a": {
+      "training/00-damage": 920,
+      "training/01-whole": 920,
+      "validation/00-damage": 230,
+      "validation/01-whole": 230
+    },
+    "CarDD": {
+      "train2017": 2816,
+      "val2017": 810,
+      "test2017": 374
+    }
+  },
+  "classifier_held_out_test": [
+    {
+      "model": "resnet18",
+      "accuracy": "0.9565217391304348",
+      "precision_macro": "0.9565217391304348",
+      "recall_macro": "0.9565217391304348",
+      "f1_macro": "0.9565217391304348"
+    },
+    {
+      "model": "vit",
+      "accuracy": "0.9347826086956522",
+      "precision_macro": "0.9356060606060606",
+      "recall_macro": "0.9347826086956521",
+      "f1_macro": "0.9347517730496454"
+    },
+    {
+      "model": "cnn",
+      "accuracy": "0.75",
+      "precision_macro": "0.7501182033096927",
+      "recall_macro": "0.75",
+      "f1_macro": "0.749970459647879"
+    }
+  ],
+  "yolo_overall": {
+    "box_mAP50": 0.753,
+    "box_mAP50_95": 0.592,
+    "mask_mAP50": 0.735,
+    "mask_mAP50_95": 0.562,
+    "conf": 0.25,
+    "iou": 0.6,
+    "val_images": 810,
+    "note": "unchanged since first run; CarDD segmentation data not affected by data1a replacement"
+  },
+  "figures": [
+    "figures/eda/cls_augmentation_preview.png",
+    "figures/eda/cls_class_distribution.png",
+    "figures/eda/cls_imgsize_training.png",
+    "figures/eda/cls_samples_training.png",
+    "figures/eda/cls_samples_validation.png",
+    "figures/eda/yolo_class_distribution.png",
+    "figures/eda/yolo_samples_val.png",
+    "figures/error_analysis/fn_00_001135.png",
+    "figures/error_analysis/fn_01_002012.png",
+    "figures/error_analysis/fn_02_002057.png",
+    "figures/error_analysis/fn_03_002066.png",
+    "figures/error_analysis/fn_04_002389.png",
+    "figures/error_analysis/yolo_confidence_tradeoff.png",
+    "figures/grad_cam/resnet18_correct_00.png",
+    "figures/grad_cam/resnet18_correct_01.png",
+    "figures/grad_cam/resnet18_correct_02.png",
+    "figures/grad_cam/resnet18_wrong_00.png",
+    "figures/grad_cam/resnet18_wrong_01.png",
+    "figures/grad_cam/resnet18_wrong_02.png",
+    "figures/grad_cam/vit_correct_00.png",
+    "figures/grad_cam/vit_correct_01.png",
+    "figures/grad_cam/vit_correct_02.png",
+    "figures/grad_cam/vit_wrong_00.png",
+    "figures/grad_cam/vit_wrong_01.png",
+    "figures/grad_cam/vit_wrong_02.png",
+    "figures/pipeline/architecture.png",
+    "figures/training/cnn_confusion.png",
+    "figures/training/cnn_history.png",
+    "figures/training/history_comparison.png",
+    "figures/training/resnet18_confusion.png",
+    "figures/training/resnet18_history.png",
+    "figures/training/vit_confusion.png",
+    "figures/training/vit_history.png"
+  ],
+  "reports": [
+    "reports/classifier_comparison.csv",
+    "reports/classifier_per_class.json",
+    "reports/eda_classification_distribution.csv",
+    "reports/eda_classification_imgsize.csv",
+    "reports/eda_summary.json",
+    "reports/eda_yolo_train_distribution.csv",
+    "reports/eda_yolo_val_distribution.csv",
+    "reports/run_summary.json",
+    "reports/yolo_confidence_sweep.csv",
+    "reports/yolo_per_class_metrics.csv",
+    "reports/yolo_train.log"
+  ],
+  "models": [
+    "BoxF1_curve.png",
+    "BoxPR_curve.png",
+    "BoxP_curve.png",
+    "BoxR_curve.png",
+    "MaskF1_curve.png",
+    "MaskPR_curve.png",
+    "MaskP_curve.png",
+    "MaskR_curve.png",
+    "args.yaml",
+    "best.pt",
+    "cnn_best.pth",
+    "cnn_history.json",
+    "confusion_matrix.png",
+    "confusion_matrix_normalized.png",
+    "labels.jpg",
+    "last.pt",
+    "resnet18_best.pth",
+    "resnet18_history.json",
+    "results.csv",
+    "results.png",
+    "train_batch0.jpg",
+    "train_batch1.jpg",
+    "train_batch14080.jpg",
+    "train_batch14081.jpg",
+    "train_batch14082.jpg",
+    "train_batch2.jpg",
+    "val_batch0_labels.jpg",
+    "val_batch0_pred.jpg",
+    "val_batch1_labels.jpg",
+    "val_batch1_pred.jpg",
+    "val_batch2_labels.jpg",
+    "val_batch2_pred.jpg",
+    "vit_best.pth",
+    "vit_history.json"
+  ]
+}

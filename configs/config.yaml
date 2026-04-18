@@ -1,0 +1,71 @@
+# Central configuration. All scripts read paths/hyperparams from here.
+# Paths are relative to the project root unless marked absolute.
+
+project_root: .
+
+seed: 42
+device: cuda  # scripts assert CUDA available
+
+# ------------------------------------------------------------------
+# Binary classification dataset (damaged vs whole)
+# Original notebook used /content/drive/MyDrive/data1a — replace locally.
+# Expected layout:
+#   data/data1a/training/{00-damage,01-whole}/*.jpg
+#   data/data1a/validation/{00-damage,01-whole}/*.jpg
+# The held-out test split is carved out programmatically from validation.
+# ------------------------------------------------------------------
+classification:
+  data_root: data/data1a
+  train_dir: training
+  val_dir: validation
+  class_names: ["00-damage", "01-whole"]  # 0=damaged, 1=whole
+  test_split_frac: 0.20        # fraction of original validation set reserved for held-out test
+  test_split_seed: 42
+
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+
+  # Training defaults (overridable via CLI)
+  epochs: 15
+  lr: 1.0e-4           # ResNet / ViT
+  custom_cnn_lr: 1.0e-3
+  focal_loss:
+    alpha: 0.75
+    gamma: 2.0
+
+# ------------------------------------------------------------------
+# YOLO instance segmentation (6 damage classes)
+# Expected layout:
+#   data/CarDD/CarDD_COCO/{annotations,train2017,val2017,test2017}
+#   data/CarDD/CARDD_YOLO/{images,labels}/{train,val}
+# ------------------------------------------------------------------
+yolo:
+  coco_root: data/CarDD/CarDD_COCO
+  yolo_root: data/CarDD/CARDD_YOLO
+  data_yaml: data/CarDD/CARDD_YOLO/cardd_LOCAL.yaml
+  class_names:
+    0: dent
+    1: scratch
+    2: crack
+    3: glass shatter
+    4: lamp broken
+    5: tire flat
+
+  # Tuned for an 8GB GPU (RTX 2080 SUPER). Original Colab run used 1280/4 on A100.
+  model: yolov8s-seg.pt
+  imgsz: 640
+  batch: 8
+  epochs: 50
+  patience: 15
+  cos_lr: true
+  close_mosaic: 10
+
+# ------------------------------------------------------------------
+# Outputs
+# ------------------------------------------------------------------
+outputs:
+  root: outputs
+  models: outputs/models
+  figures: outputs/figures
+  reports: outputs/reports

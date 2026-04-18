@@ -1,0 +1,120 @@
+{
+  "classification": {
+    "distribution": [
+      {
+        "split": "training",
+        "class": "00-damage",
+        "count": 920
+      },
+      {
+        "split": "training",
+        "class": "01-whole",
+        "count": 920
+      },
+      {
+        "split": "validation",
+        "class": "00-damage",
+        "count": 230
+      },
+      {
+        "split": "validation",
+        "class": "01-whole",
+        "count": 230
+      }
+    ],
+    "image_size_stats": {
+      "width": {
+        "count": 1500.0,
+        "mean": 446.6206666666667,
+        "std": 353.0932530316128,
+        "min": 112.0,
+        "25%": 259.0,
+        "50%": 276.0,
+        "75%": 580.0,
+        "max": 4320.0
+      },
+      "height": {
+        "count": 1500.0,
+        "mean": 311.2273333333333,
+        "std": 242.03422904948096,
+        "min": 80.0,
+        "25%": 186.0,
+        "50%": 194.0,
+        "75%": 360.25,
+        "max": 2432.0
+      },
+      "aspect": {
+        "count": 1500.0,
+        "mean": 1.449575563998946,
+        "std": 0.2675018805367653,
+        "min": 0.56,
+        "25%": 1.3350515463917525,
+        "50%": 1.3402061855670102,
+        "75%": 1.5075376884422111,
+        "max": 3.3934426229508197
+      }
+    },
+    "imbalance_ratio": 1.0
+  },
+  "yolo": {
+    "train_distribution": [
+      {
+        "class": "scratch",
+        "count": 2560
+      },
+      {
+        "class": "dent",
+        "count": 1806
+      },
+      {
+        "class": "crack",
+        "count": 651
+      },
+      {
+        "class": "lamp broken",
+        "count": 494
+      },
+      {
+        "class": "glass shatter",
+        "count": 475
+      },
+      {
+        "class": "tire flat",
+        "count": 225
+      }
+    ],
+    "val_distribution": [
+      {
+        "class": "scratch",
+        "count": 728
+      },
+      {
+        "class": "dent",
+        "count": 501
+      },
+      {
+        "class": "crack",
+        "count": 177
+      },
+      {
+        "class": "lamp broken",
+        "count": 141
+      },
+      {
+        "class": "glass shatter",
+        "count": 135
+      },
+      {
+        "class": "tire flat",
+        "count": 62
+      }
+    ],
+    "imbalance": {
+      "min": 225.0,
+      "max": 2560.0,
+      "ratio_max_over_min": 11.377777777777778,
+      "entropy": 1.4790473615375936
+    }
+  },
+  "missing": []
+}
