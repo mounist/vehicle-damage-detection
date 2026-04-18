@@ -1,5 +1,7 @@
-# Data & model weights
-data/
+# Raw dataset — project-root only (don't ignore src/data/ which is source code!)
+/data/
+
+# Model weights
 *.pt
 *.pth
 *.cache
